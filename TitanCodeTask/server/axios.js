@@ -13,7 +13,7 @@ export const client = axios.create({ baseURL: process.env.API_URL });
   });
   
 axiosRetry(client, {
-    retries: 3,
+    retries: process.env.RETRY_AMOUNT,
     retryDelay: (retryCount) => {
         console.log(`retry attempt: ${retryCount}`);
         return retryCount * 2000; // exponential backoff (firs)
